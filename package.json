@@ -1,0 +1,23 @@
+{
+  "name": "bkrs",
+  "version": "0.0.0",
+  "description": "Convert bkrs.info database to zd format",
+  "scripts": {
+    "test": "node lib/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ukoloff/bkrs.git"
+  },
+  "keywords": [
+    "BKRS"
+  ],
+  "author": {
+    "name": "Stas Ukolov",
+    "email": "ukoloff@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/ukoloff/bkrs/issues"
+  },
+  "homepage": "https://github.com/ukoloff/bkrs"
+}

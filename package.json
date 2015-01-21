@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ukoloff/bkrs",
   "dependencies": {
-    "coffee-script": "^1.8.0"
+    "coffee-script": "^1.8.0",
+    "split": "^0.3.2"
   }
 }

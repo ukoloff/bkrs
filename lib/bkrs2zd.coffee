@@ -3,7 +3,8 @@ fs = require 'fs'
 split = require './split'
 ts = require './timestamp'
 
-fs.createReadStream "src/dabkrs_#{ts}.gz"
+fs.createReadStream "src/dabruks_#{ts}.gz"
 .pipe zlib.createUnzip()
 .pipe split (arr)->
-  console.log '<', arr.join(':'), '>' if arr.length!=3
+  @queue "<#{arr.join ':'}>\n"
+.pipe process.stdout

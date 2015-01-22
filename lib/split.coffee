@@ -20,10 +20,10 @@ module.exports = (cb)->
     mode = def
 
   def = (s)->
-    if /^\s/.test s
-      buf.push s if s = s.trim()
+    if s = s.trim()
+      buf.push s
     else
-      (mode = word) s
+      mode = word
 
   # Line splitter
   s = split (line)->

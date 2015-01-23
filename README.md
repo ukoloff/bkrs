@@ -1,5 +1,5 @@
 # bkrs
-Convert bkrs.info database to zd format
+Convert bkrs.info database to zd/fdb format
 
 ## Installation
 

@@ -1,6 +1,6 @@
 resolvable = (file)->
   try
-    require.resolve file = "./#{part}"
+    require.resolve file
     true
   catch
 

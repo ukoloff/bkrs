@@ -1,3 +1,5 @@
+fs = require 'fs'
+
 pinyin = {}
 
 @article = (arr)->
@@ -10,9 +12,9 @@ pinyin = {}
   .filter (x)->x
   .forEach (py)-> (pinyin[py]||=[]).push arr[0]
 
-  # console.log py.join(', ')
-
   @queue arr
 
 @eof = ->
-  console.log 'PY', pinyin
+  o = fs.createWriteStream "src/py"
+  for k, v of pinyin
+    o.write "#{k}  #{v.map((s)->"<r>#{s}</r>").join '<br>'}\n"

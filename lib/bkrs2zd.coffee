@@ -9,4 +9,5 @@ for k, v of require './parts'
   .pipe zlib.createUnzip()
   .pipe split v.article or (arr)-> @queue arr
   .pipe dumpz()
+  .on('end', v.eof or ->)
   .pipe fs.createWriteStream "src/#{k}"

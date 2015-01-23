@@ -15,6 +15,6 @@ pinyin = {}
   @queue arr
 
 @eof = ->
-  o = fs.createWriteStream "src/py"
-  for k, v of pinyin
-    o.write "#{k}  #{v.map((s)->"<r>#{s}</r>").join '<br>'}\n"
+  all = for k, v of pinyin
+    "#{k}  #{v.map((s)->"<r>#{s}</r>").join '<br>'}"
+  fs.writeFile "src/py", all.join "\n"

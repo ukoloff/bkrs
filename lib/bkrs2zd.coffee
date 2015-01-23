@@ -3,7 +3,6 @@ fs = require 'fs'
 split = require './split'
 ts = require './timestamp'
 dumpz = require './dumpz'
-parts =
 
 for k, v of require './parts'
   fs.createReadStream "src/#{k}_#{ts}.gz"

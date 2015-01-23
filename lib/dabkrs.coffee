@@ -1,4 +1,5 @@
 fs = require 'fs'
+tongwen = require 'tongwen'
 
 pinyin = {}
 
@@ -14,7 +15,13 @@ pinyin = {}
 
   @queue arr
 
+pyLine = (s)->
+  r = "<r>#{s}</r>"
+  st = tongwen.s2t s
+  r+=" / #{st}" if st!=s
+  r
+
 @eof = ->
   all = for k, v of pinyin
-    "#{k}  #{v.map((s)->"<r>#{s}</r>").join '<br>'}"
+    "#{k}  #{v.map(pyLine).join '<br>'}"
   fs.writeFile "src/py", all.join "\n"

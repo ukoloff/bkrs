@@ -7,7 +7,7 @@ module.exports = (cb)->
   flush = ->
     return unless buf.length
     cb?.call self, buf
-    buf.length = 0
+    buf= []
 
   mode = hash = (s)->
     return if /^\s*#/.test s

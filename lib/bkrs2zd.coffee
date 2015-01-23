@@ -9,5 +9,4 @@ fs.createReadStream "src/dabruks_#{ts}.gz"
 .pipe split (arr)->
   @queue arr
 .pipe dumpz()
-.pipe process.stdout
-# .pipe fs.createWriteStream 'src/ru'
+.pipe fs.createWriteStream 'src/ru'

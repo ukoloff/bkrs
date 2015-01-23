@@ -9,7 +9,7 @@ module.exports = (cb)->
     cb?.call self, buf
     buf= []
 
-  mode = hash = (s)->
+  mode = (s)->
     return if /^\s*#/.test s
     (mode = word) s
 

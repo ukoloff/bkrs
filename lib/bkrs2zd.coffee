@@ -3,14 +3,10 @@ fs = require 'fs'
 split = require './split'
 ts = require './timestamp'
 dumpz = require './dumpz'
-
 parts =
-  zh: 'dabkrs'
-  ru: 'dabruks'
-  ex: 'examples'
 
-for k, v of parts
-  fs.createReadStream "src/#{v}_#{ts}.gz"
+for k, v of require './parts'
+  fs.createReadStream "src/#{k}_#{ts}.gz"
   .pipe zlib.createUnzip()
   .pipe split (arr)->
     @queue arr

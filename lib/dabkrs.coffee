@@ -8,7 +8,7 @@ pinyin = {}
 
   arr[1]
   .replace /\s*/g, ''
-  .replace /\[.*]/g, ''  # drop [...]
+  .replace /\[.*]/g, ','  # drop [...]
   .split /[;,]/
   .filter (x)->x
   .forEach (py)-> (pinyin[py]||=[]).push arr[0]

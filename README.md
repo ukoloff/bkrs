@@ -1,4 +1,7 @@
 # bkrs
+
+[![Build Status](https://travis-ci.org/ukoloff/bkrs.svg?branch=master)](https://travis-ci.org/ukoloff/bkrs)
+
 Convert bkrs.info database to zd/fdb format
 
 ## Installation
@@ -24,3 +27,4 @@ Convert bkrs.info database to zd/fdb format
   * [BKRS](http://bkrs.info/)
   * [Dictan](http://www.softex.info/)
   * [Node.js](http://nodejs.org/)
+  * [Travis CI](https://travis-ci.org/)

@@ -1,3 +1,7 @@
+#
+# Stream to split DSL source into articles
+#
+
 split = require 'split'
 through = require 'through'
 
@@ -9,25 +13,25 @@ module.exports = (cb)->
     cb?.call self, buf
     buf= []
 
-  mode = (s)->
+  $ = (s)->
     return if /^\s*#/.test s
-    (mode = word) s
+    ($ = word) s
 
   word = (s)->
     return unless s = s.trim()
     do flush
     buf.push s
-    mode = def
+    $ = def
 
   def = (s)->
     if s = s.trim()
       buf.push s
     else
-      mode = word
+      $ = word
 
   # Line splitter
   s = split (line)->
-    mode line
+    $ line
     return
 
   write = (buf)->

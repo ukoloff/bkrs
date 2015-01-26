@@ -1,3 +1,7 @@
+#
+# HTML quoting
+#
+
 htmls =
   '&': '&amp;'
   '<': '&lt;'

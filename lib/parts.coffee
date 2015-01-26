@@ -1,3 +1,7 @@
+#
+# Define BKRS sources
+#
+
 resolvable = (file)->
   try
     require.resolve file

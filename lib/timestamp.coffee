@@ -1,3 +1,7 @@
+#
+# Find latest BKRS source(s) available
+#
+
 fs = require 'fs'
 
 module.exports = fs.readdirSync 'src'

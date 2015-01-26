@@ -1,3 +1,7 @@
+#
+# Stream to output article(s)
+#
+
 through = require 'through'
 
 module.exports = ->

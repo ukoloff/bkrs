@@ -1,3 +1,7 @@
+#
+# Read and process all BKRS sources
+#
+
 zlib = require 'zlib'
 fs = require 'fs'
 split = require './split'

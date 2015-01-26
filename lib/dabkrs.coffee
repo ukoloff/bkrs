@@ -4,6 +4,7 @@
 
 fs = require 'fs'
 tongwen = require 'tongwen'
+tag = require './tag'
 
 pinyin = {}
 
@@ -19,13 +20,21 @@ pinyin = {}
 
   @queue arr
 
+tags = {}
+
+getTags = ->
+  for n in ['ref', 'wrap']
+    for close in [0..1]
+      tags["#{n}#{if close then 'x' else ''}"] = tag n, group: 'py', close: close
+
 pyLine = (s)->
-  r = "<r>#{s}</r>"
+  r = "#{tags.ref}#{s}#{tags.refx}"
   st = tongwen.s2t s
   r+=" / #{st}" if st!=s
-  r
+  "#{tags.wrap}#{r}#{tags.wrapx}"
 
 @eof = ->
+  do getTags
   all = for k, v of pinyin
-    "#{k}  #{v.map(pyLine).join '<br>'}"
+    "#{k}  #{v.map(pyLine).join ''}"
   fs.writeFile "src/py", all.join "\n"

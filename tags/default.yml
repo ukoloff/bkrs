@@ -19,3 +19,6 @@ tags:
   p:  font color="green"
   ex: font color='navy'
   c:  font color='gray'
+py:
+  ref: r
+  wrap: li

@@ -73,3 +73,14 @@ describe 'DSL parser', ->
 
     parse '"[ p&g]"'
     .should.be.eql [0, '&quot;', 1, 'p&amp;g', 0, '&quot;']
+
+  it 'uses backslashes to quote', ->
+
+    parse 'x\\[y\\]z'
+    .should.be.eql [0, 'x[y]z']
+
+    parse 'word\\'
+    .should.be.eql [0, 'word']
+
+    parse 'x[y\\i]z'
+    .should.be.eql [0, 'x', 1, 'y\\i', 0, 'z']

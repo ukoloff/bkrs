@@ -9,3 +9,10 @@ tags:
   double:
   - u
   - sub
+others:
+  b: big
+  i:
+  - it a=l
+  - x
+
+root: path base='/'

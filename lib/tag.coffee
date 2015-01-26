@@ -21,10 +21,10 @@ module.exports = tag = (tag, options)->
   yml = ymls[file] ||= yaml.safeLoad fs.readFileSync file
 
   t = yml
-  t = t?[g] for g in options.group.split /\W+/
+  t = t?[g] for g in options.group.split /\W+/ when g
   unless t = t?[tag]
     t = yml.tag || 'span'
-    xa = " x-tag: \"#{tag}\"" unless options.close
+    xa = " x-tag=\"#{tag}\"" unless options.close
 
   unless Array.isArray t
     t = if t then [t] else []

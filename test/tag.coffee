@@ -37,7 +37,39 @@ describe 'Tag mapper', ->
   it 'Marks unknown tags', ->
 
     tag 'oops'
-    .should.be.equal '<span x-tag: "oops">'
+    .should.be.equal '<span x-tag="oops">'
 
     tag 'oops', close: true
     .should.be.equal '</span>'
+
+    tag 'oops', default: 'none'
+    .should.be.equal '<spam class="error" x-tag="oops">'
+
+    tag 'oops', close: true, default: 'none'
+    .should.be.equal '</spam>'
+
+    tag 'oops', default: 'none2'
+    .should.be.equal '<spam class="error" x-tag="oops"><diff id="fail" x-tag="oops">'
+
+    tag 'oops', close: true, default: 'none2'
+    .should.be.equal '</diff></spam>'
+
+  it 'Uses different sets', ->
+
+    tag 'b', group: 'others'
+    .should.be.equal '<big>'
+
+    tag 'b', group: 'others', close: true
+    .should.be.equal '</big>'
+
+    tag 'i', group: 'others'
+    .should.be.equal '<it a=l><x>'
+
+    tag 'i', group: 'others', close: true
+    .should.be.equal '</x></it>'
+
+    tag 'root', group: '-'
+    .should.be.equal "<path base='/'>"
+
+    tag 'root', group: '-', close: true
+    .should.be.equal '</path>'

@@ -1,3 +1,7 @@
+#
+# Special processing for zh->ru source
+#
+
 fs = require 'fs'
 tongwen = require 'tongwen'
 

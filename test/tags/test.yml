@@ -5,3 +5,7 @@ tags:
   b: b
   i: i
   ref: r
+  attributed: div class="none"
+  double:
+  - u
+  - sub

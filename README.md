@@ -15,7 +15,7 @@ Convert bkrs.info database to zd/fdb format
 
   * Download current [BKRS sources](http://bkrs.info/p47) (*_yymmdd.gz files, see bottom of page)
   * Put them into src folder
-  * npm start
+  * npm start [--tags=format]
   * See sources for makezd in src folder
 
 ## Development

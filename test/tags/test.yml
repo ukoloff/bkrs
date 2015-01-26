@@ -1,0 +1,7 @@
+# Default tags mapping for testing
+
+tag: span
+tags:
+  b: b
+  i: i
+  ref: r

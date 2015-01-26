@@ -25,7 +25,8 @@
     "tongwen": "~0.3.2",
     "coffee-script": "~1.8.0",
     "through": "~2.3.6",
-    "split": "~0.3.2"
+    "split": "~0.3.2",
+    "js-yaml": "~3.2.5"
   },
   "devDependencies": {
     "mocha": "~2.1.0",

@@ -5,6 +5,8 @@ tags:
   b: b
   i: i
   ref: r
+  m2: >
+    div style="margin-left: 1em;"
   attributed: div class="none"
   double:
   - u

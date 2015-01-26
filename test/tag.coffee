@@ -22,6 +22,12 @@ describe 'Tag mapper', ->
     tag 'ref', close: true
     .should.be.equal '</r>'
 
+    tag 'm2'
+    .should.be.equal '<div style="margin-left: 1em;">'
+
+    tag 'm2', close: true
+    .should.be.equal '</div>'
+
     tag 'double'
     .should.be.equal '<u><sub>'
 

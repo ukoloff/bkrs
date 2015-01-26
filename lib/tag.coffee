@@ -32,7 +32,8 @@ module.exports = tag = (tag, options)->
   t.reverse() if options.close
 
   t.map (tag)->
-    tag = '/'+tag.trim().replace /\s.*/, '' if options.close
+    tag = tag.trim()
+    tag = '/'+tag.replace /\s.*/, '' if options.close
     "<"+tag+xa+">"
   .join ''
 

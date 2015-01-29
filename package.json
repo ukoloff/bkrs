@@ -21,7 +21,7 @@
     "url": "https://github.com/ukoloff/bkrs/issues"
   },
   "homepage": "https://github.com/ukoloff/bkrs",
-  "sources": ["dabkrs", "dabruks", "examples"],
+  "sources": ["examples", "dabkrs", "dabruks"],
   "extras": ["py"],
   "dependencies": {
     "tongwen": "~0.3.2",

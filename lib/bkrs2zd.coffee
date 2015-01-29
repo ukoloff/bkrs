@@ -18,8 +18,7 @@ seq Object.keys sources
   .pipe zlib.createUnzip()
   .pipe split v.article or (arr)-> @queue arr
   .pipe dumpz()
-  .on('end', v.eof or ->)
   .on('end', done)
   .pipe fs.createWriteStream "src/#{file}"
 .done ->
-  require './combine'
+  require './extras'

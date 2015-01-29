@@ -1,3 +1,6 @@
+#
+# Assemble generated files into single source
+#
 fs = require 'fs'
 through = require 'through'
 config = require '../package'

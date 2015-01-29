@@ -3,6 +3,8 @@ through = require 'through'
 config = require '../package'
 async = require './async'
 
+console.log 'Creating full dictionary source...'
+
 result = fs.createWriteStream 'src/bkrs.txt'
 
 async config.sources.concat(config.extras), (file, done)->

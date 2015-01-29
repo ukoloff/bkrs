@@ -7,11 +7,16 @@ fs = require 'fs'
 split = require './split'
 ts = require './timestamp'
 dumpz = require './dumpz'
+async = require './async'
+sources = require './parts'
 
-for k, v of require './parts'
-  fs.createReadStream "src/#{k}_#{ts}.gz"
+async Object.keys(sources), (file, done)->
+  v = sources[file]
+  console.log "Parsing #{file}..."
+  fs.createReadStream "src/#{file}_#{ts}.gz"
   .pipe zlib.createUnzip()
   .pipe split v.article or (arr)-> @queue arr
   .pipe dumpz()
   .on('end', v.eof or ->)
-  .pipe fs.createWriteStream "src/#{k}"
+  .on('end', done)
+  .pipe fs.createWriteStream "src/#{file}"

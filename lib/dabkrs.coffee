@@ -5,17 +5,14 @@
 fs = require 'fs'
 tongwen = require 'tongwen'
 tag = require './tag'
+py = require './py'
 
 pinyin = {}
 
 @article = (arr)->
   return if '_'==arr[1]
 
-  arr[1]
-  .replace /\s*/g, ''
-  .replace /\[.*]/g, ','  # drop [...]
-  .split /[;,]/
-  .filter (x)->x
+  py.split arr[1]
   .forEach (py)-> (pinyin[py]||=[]).push arr[0]
 
   @queue arr

@@ -4,8 +4,7 @@
   "description": "Convert bkrs.info database to zd format",
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha",
-    "start": "node lib/convert",
-    "poststart": "node lib/glue"
+    "start": "node lib/convert"
   },
   "repository": {
     "type": "git",

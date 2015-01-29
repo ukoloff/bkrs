@@ -22,4 +22,4 @@ seq Object.keys sources
   .on('end', done)
   .pipe fs.createWriteStream "src/#{file}"
 .done ->
-  console.log "Done"
+  require './combine'

@@ -7,10 +7,10 @@ fs = require 'fs'
 split = require './split'
 ts = require './timestamp'
 dumpz = require './dumpz'
-async = require './async'
+seq = require './seq'
 sources = require './parts'
 
-async
+seq
   list: Object.keys sources
   step: (file, done)->
     v = sources[file]

@@ -1,13 +1,13 @@
 fs = require 'fs'
 through = require 'through'
 config = require '../package'
-async = require './async'
+seq = require './seq'
 
 console.log 'Creating full dictionary source...'
 
 result = fs.createWriteStream 'src/bkrs.txt'
 
-async
+seq
   list: config.sources.concat config.extras
   step: (file, done)->
     fs.createReadStream "src/#{file}"

@@ -2,10 +2,19 @@
 # Simple async loop
 #
 
-module.exports = (options)->
-  list = options.list.slice()
+module.exports = (list)->
+  fn = null
+  done = null
+  list = list.slice()
   do step = ->
-    if list.length
-      options.step? list.shift(), step
-    else
-      options.end?()
+    process.nextTick ->
+      if list.length
+        fn? list.shift(), step
+      else
+        done?()
+  step: (cb)->
+    fn = cb
+    @
+  done: (cb)->
+    done = cb
+    @

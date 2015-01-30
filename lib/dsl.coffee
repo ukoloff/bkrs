@@ -22,14 +22,17 @@ module.exports = (s, fn)->
         soFar += s.substring 0, 1
         s = s.substring 1
       when '['
-        do out
         do tag
 
   tag = ->
     m = /]|$/.exec s
-    t = m.input.substring 0, m.index
-        .trim()
     s = m.input.substring m.index+1
+    t = m.input.substring 0, m.index
+    if /[\u0400-\u04ff]/.test t
+      soFar+="[#{t}#{m[0]}"
+      return
+    do out
+    t = t.trim()
     x = 1
     if '/'==t.substring 0, 1
       x = -1

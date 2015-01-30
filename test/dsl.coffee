@@ -97,3 +97,11 @@ describe 'DSL parser', ->
 
     parse 'x[y\\i]z'
     .should.be.eql [0, 'x', 1, 'y\\i', 0, 'z']
+
+  it 'Disallows cyrillic in tags', ->
+
+    parse s = ' а [я] против! '
+    .should.be.eql [0, s]
+
+    parse s = ' и [я'
+    .should.be.eql [0, s]

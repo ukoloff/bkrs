@@ -4,6 +4,7 @@ tag: span
 tags:
   b: b
   i: i
+  u: u
   ref: r
   m: div
   m1: div
@@ -19,7 +20,7 @@ tags:
   p:  font color="green"
   ex: font color='navy'
   e:  font color='navy'
-  c:  font
+  c: font color='black'
   c red: font color='red'
   c black: font color='black'
   c green: font color='green'

@@ -28,7 +28,7 @@ module.exports = (s, fn)->
     m = /]|$/.exec s
     s = m.input.substring m.index+1
     t = m.input.substring 0, m.index
-    if /[\u0400-\u04ff]/.test t
+    unless /^\s*\/?\s*[*a-z]/i.test t
       soFar+="[#{t}#{m[0]}"
       return
     do out

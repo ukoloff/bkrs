@@ -18,7 +18,15 @@ tags:
   '*': font color="red"
   p:  font color="green"
   ex: font color='navy'
-  c:  font color='gray'
+  e:  font color='navy'
+  c:  font
+  c red: font color='red'
+  c black: font color='black'
+  c green: font color='green'
+  c brown: font color='brown'
+  c violet: font color='violet'
+  c crimson: font color='crimson'
+  c gray: font color='gray'
 py:
   ref: r
   wrap: li

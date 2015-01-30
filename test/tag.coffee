@@ -40,6 +40,12 @@ describe 'Tag mapper', ->
     tag 'attributed', close: true
     .should.be.equal '</div>'
 
+    tag 'c violet'
+    .should.be.equal "<font color='violet'>"
+
+    tag 'c violet', close: true
+    .should.be.equal '</font>'
+
   it 'Marks unknown tags', ->
 
     tag 'oops'

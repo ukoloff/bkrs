@@ -55,6 +55,19 @@ describe 'DSL parser', ->
     parse '[ / '
     .should.be.eql [-1, '']
 
+    parse '[c red]'
+    .should.be.eql [1, 'c red']
+
+    parse '[ c  red ]'
+    .should.be.eql [1, 'c red']
+
+    parse '[/c red]'
+    .should.be.eql [-1, 'c red']
+
+    parse '[  /  c  red  ]'
+    .should.be.eql [-1, 'c red']
+
+
   it 'Mixes text and tags', ->
 
     parse 'Q[w]e[/r]t'

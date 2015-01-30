@@ -35,7 +35,7 @@ module.exports = (s, fn)->
       x = -1
       t = t.substring 1
         .trim()
-    fn? x, t
+    fn? x, t.replace /\s+/, ' '
 
   do text while s.length
   do out

@@ -18,12 +18,15 @@ module.exports = ->
       .join ''
     @queue "#{word}  #{art}\n"
 
+# Tags cache
+tags = {}
+
 # Convert single DSL line to ZD
 dsl2zd = (s)->
   zd = ''
   dsl s, (open, text)->
     zd += if open
-      tag text, close: open<0
+      tags["#{close = open<0}#{text}"]||=tag text, close: close
     else
       text
   zd

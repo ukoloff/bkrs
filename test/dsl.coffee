@@ -23,17 +23,20 @@ describe 'DSL parser', ->
     parse '[/b]'
     .should.be.eql [-1, 'b']
 
-    parse '[]'
-    .should.be.eql [1, '']
+    parse '*[*]*[/*]*'
+    .should.be.eql [0, '*', 1, '*', 0, '*', -1, '*', 0, '*']
 
-    parse '[/]'
-    .should.be.eql [-1, '']
+    parse s = '[]'
+    .should.be.eql [0, s]
 
-    parse '['
-    .should.be.eql [1, '']
+    parse s = '[/]'
+    .should.be.eql [0, s]
 
-    parse '[/'
-    .should.be.eql [-1, '']
+    parse s = '['
+    .should.be.eql [0, s]
+
+    parse s = '[/'
+    .should.be.eql [0, s]
 
   it 'Trim whitepspaces in tags', ->
 
@@ -43,17 +46,17 @@ describe 'DSL parser', ->
     parse '[ / d ]'
     .should.be.eql [-1, 'd']
 
-    parse '[ ]'
-    .should.be.eql [1, '']
+    parse s = '[ ]'
+    .should.be.eql [0, s]
 
     parse '[/ ]'
-    .should.be.eql [-1, '']
+    .should.be.eql [0, '[/ ]']
 
-    parse '[  '
-    .should.be.eql [1, '']
+    parse s = '[  '
+    .should.be.eql [0, s]
 
-    parse '[ / '
-    .should.be.eql [-1, '']
+    parse s = '[ / '
+    .should.be.eql [0, s]
 
     parse '[c red]'
     .should.be.eql [1, 'c red']
@@ -81,8 +84,8 @@ describe 'DSL parser', ->
     parse 'a<b>c'
     .should.be.eql [0, "a&lt;b&gt;c"]
 
-    parse '[ &x ]'
-    .should.be.eql [1, "&amp;x"]
+    parse '[ x&x ]'
+    .should.be.eql [1, "x&amp;x"]
 
     parse '"[ p&g]"'
     .should.be.eql [0, '&quot;', 1, 'p&amp;g', 0, '&quot;']
@@ -98,10 +101,19 @@ describe 'DSL parser', ->
     parse 'x[y\\i]z'
     .should.be.eql [0, 'x', 1, 'y\\i', 0, 'z']
 
-  it 'Disallows cyrillic in tags', ->
+  it 'requires tag start with letter or asterisk', ->
 
     parse s = ' а [я] против! '
     .should.be.eql [0, s]
 
     parse s = ' и [я'
     .should.be.eql [0, s]
+
+    parse s = ' numbers [4]'
+    .should.be.eql [0, s]
+
+    parse s = ' dots [...]'
+    .should.be.eql [0, s]
+
+    parse  '<[*a]![/*a]>'
+    .should.be.eql [0, '&lt;', 1 , '*a', 0, '!', -1, '*a', 0, '&gt;']

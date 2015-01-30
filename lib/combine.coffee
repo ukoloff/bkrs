@@ -17,4 +17,6 @@ seq config.sources.concat config.extras
   .pipe through(null, ->)
   .pipe result
 .done ->
+  do require './dumpz'
+  .report
   console.log "That's all folks!"

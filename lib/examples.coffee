@@ -24,6 +24,18 @@ ex.init()
 @_for = _for = (str)->
   ex
   .search str
+  .sort (a, b)->
+    if a.length<b.length
+      -1
+    else if a.length>b.length
+      1
+    else if a<b
+      -1
+    else if a>b
+      1
+    else
+      0
+  .slice(0, 108)
   .map (x)->
     i: x.indexOf str
     s: x

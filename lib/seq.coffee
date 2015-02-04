@@ -7,7 +7,7 @@ module.exports = (list)->
   done = null
   list = list.slice()
   do step = ->
-    process.nextTick ->
+    setImmediate ->
       if list.length
         fn? list.shift(), step
       else

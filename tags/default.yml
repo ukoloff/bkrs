@@ -16,11 +16,11 @@ tags:
     div style="margin-left: 3em;"
   m5: >
     div style="margin-left: 4em;"
-  '*': font color="red"
+  '*': font color="navy"
   p:  font color="green"
-  ex: font color='navy'
-  e:  font color='navy'
-  c: font color='black'
+  ex: font color='gray'
+  e:  font color='gray'
+  c: font color='green'
   c red: font color='red'
   c black: font color='black'
   c green: font color='green'

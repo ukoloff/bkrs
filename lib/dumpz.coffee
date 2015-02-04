@@ -7,6 +7,7 @@ yaml = require 'js-yaml'
 through = require 'through'
 dsl = require './dsl'
 tag = require './tag'
+bench = require './bench'
 
 passThru = 'dsl'==process.env.npm_config_tags
 
@@ -44,7 +45,7 @@ dsl2zd = (s)->
 
 fn.report = ->
   return if passThru
-  console.log 'Saving used tags...'
+  console.log "#{do bench}Saving used tags..."
   r = {}
   Object.keys tags
   .map (tag)->

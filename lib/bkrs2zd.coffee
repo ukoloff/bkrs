@@ -9,11 +9,12 @@ ts = require './timestamp'
 dumpz = require './dumpz'
 seq = require './seq'
 sources = require './parts'
+bench = require './bench'
 
 seq Object.keys sources
 .step (file, done)->
   v = sources[file]
-  console.log "Parsing #{file}..."
+  console.log "#{do bench}Parsing #{file}..."
   fs.createReadStream "src/#{file}_#{ts}.gz"
   .pipe zlib.createUnzip()
   .pipe split v.article or (arr)-> @queue arr

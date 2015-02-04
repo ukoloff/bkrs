@@ -4,6 +4,7 @@
 fs = require 'fs'
 through = require 'through'
 
+bench = require './bench'
 dumpz = require './dumpz'
 seq = require './seq'
 extras = require '../package'
@@ -11,7 +12,7 @@ extras = require '../package'
 
 seq extras
 .step (x, done)->
-  console.log "Creating #{x}..."
+  console.log "#{do bench}Creating #{x}..."
   out = through()
   out
   .pipe dumpz()

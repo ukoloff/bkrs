@@ -12,4 +12,4 @@ s2t = {}
 
 @save = (dst)->
   for k, v of s2t
-    dst.write [v, "=[ref]#{k}[/ref]"]
+    dst.write [v, "[p]трад.[/p] [ref]#{k}[/ref]"]

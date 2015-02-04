@@ -1,7 +1,6 @@
 #
 # Add traditional chines articles
 #
-fs = require 'fs'
 tongwen = require 'tongwen'
 
 s2t = {}
@@ -11,8 +10,6 @@ s2t = {}
   t = tongwen.s2t word
   s2t[word] = t if t!=word
 
-@save = (done)->
-  all = for k, v of s2t
-    "#{v}  =<r>#{k}</r>"
-  fs.writeFile "src/s2t", all.join "\n"
-  done?()
+@save = (dst)->
+  for k, v of s2t
+    dst.write [v, "=[ref]#{k}[/ref]"]

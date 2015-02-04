@@ -1,9 +1,7 @@
 #
 # Generate pinyin 2 hanzi index
 #
-fs = require 'fs'
 tongwen = require 'tongwen'
-tag = require './tag'
 
 py2hz = {}
 
@@ -20,22 +18,10 @@ py2hz = {}
   .forEach (py)->
     (py2hz[py]||=[]).push hanzi
 
-tags = {}
-
-getTags = ->
-  for n in ['ref', 'wrap']
-    for close in [0..1]
-      tags["#{n}#{if close then 'x' else ''}"] = tag n, group: 'py', close: close
-
 pyLine = (s)->
-  r = "#{tags.ref}#{s}#{tags.refx}"
   st = tongwen.s2t s
-  r+=" / #{st}" if st!=s
-  "#{tags.wrap}#{r}#{tags.wrapx}"
+  "[ref]#{s}[/ref]#{if s!=st then " / #{st}" else ''}"
 
-@save = (done)->
-  do getTags
-  all = for k, v of py2hz
-    "#{k}  #{v.map(pyLine).join ''}"
-  fs.writeFile "src/py", all.join "\n"
-  done?()
+@save = (dst)->
+  for k, v of py2hz
+    dst.write [k].concat v.map pyLine

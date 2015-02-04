@@ -28,6 +28,3 @@ tags:
   c violet: font color='violet'
   c crimson: font color='crimson'
   c gray: font color='gray'
-py:
-  ref: r
-  wrap: li

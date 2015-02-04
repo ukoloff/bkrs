@@ -1,9 +1,13 @@
 #
 # Special processing for examples
 #
+fts = require 'full-text-search-light'
+
 s2t = require './s2t'
 
-ex = []
+ex = new fts 'BKRS'
+ex.ignore_case true
+ex.init()
 
 @article = (arr)->
   # Only chinese examples
@@ -13,16 +17,16 @@ ex = []
   return unless arr.slice(1).some (s)->/[\u0400-\u04ff]/.test s
 
   s2t.add arr[0]
-  ex.push arr[0]
+  ex.add arr[0]
 
   @queue arr
 
 @_for = _for = (str)->
   ex
+  .search str
   .map (x)->
     i: x.indexOf str
     s: x
-  .filter (z)->z.i>=0
   .sort (a, b)->
     if a.i<b.i
       -1

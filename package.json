@@ -39,7 +39,8 @@
     "coffee-script": "~1.9.0",
     "through": "~2.3.6",
     "split": "~0.3.3",
-    "js-yaml": "~3.2.5"
+    "js-yaml": "~3.2.5",
+    "full-text-search-light": "~0.0.7"
   },
   "devDependencies": {
     "mocha": "~2.1.0",

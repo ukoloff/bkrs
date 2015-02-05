@@ -53,7 +53,12 @@ dsl2zd = (s)->
   zd
 
 fn.report = ->
-  return if passThru
+  if passThru
+    require './gd'
+  else
+    do reportTags
+
+reportTags = ->
   log "Saving used tags..."
   r = {}
   Object.keys tags

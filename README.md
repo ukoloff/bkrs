@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ukoloff/bkrs.svg?branch=master)](https://travis-ci.org/ukoloff/bkrs)
 
-Convert bkrs.info database to zd/fdb format
+Convert bkrs.info database to Dictan(zd/fdb) and GoldenDict(dsl) format
 
 ## Installation
 
@@ -17,6 +17,11 @@ Convert bkrs.info database to zd/fdb format
   * Put them into src folder
   * npm start [--tags=format]
   * See sources for makezd in src folder
+
+Feed src/bkrs.txt to makezd or Dictan converter.
+
+Command `npm start --tags=dsl` will make it DSL formatted, so feed it to new Dictan converter.
+In addition src/*.dsl are good for GoldenDict.
 
 ## Development
 

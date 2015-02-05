@@ -1,0 +1,13 @@
+other: dabruks
+out:
+  bkrs:
+    name: БКРС
+    index_language: Chinese
+    contents_language: Russian
+  bruks:
+    name: БРуКС
+    index_language: Russian
+    contents_language: Chinese
+common:
+  source: http://bkrs.info/
+  converter: https://github.com/ukoloff/bkrs

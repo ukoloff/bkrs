@@ -10,7 +10,7 @@ convert = (buf)->
     r = Buffer.concat [r, data]
   x.write buf
   x.write null
-  b for b, i in r
+  b for b in r
 
 describe 'UTF16 converter', ->
 

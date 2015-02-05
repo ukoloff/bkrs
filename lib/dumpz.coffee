@@ -11,6 +11,10 @@ log = require './log'
 
 passThru = 'dsl'==process.env.npm_config_tags
 
+# Tags cache
+tags = {}
+wrappers = null
+
 module.exports = fn = ->
 
   indent = (s, i)-> "#{if i then ' ' else ''}#{s}"
@@ -24,14 +28,19 @@ module.exports = fn = ->
     if 1==art.length
       art = art[0]
     else
-      art = art.map (s)-> "<div>#{s}</div>"
-      .join ''
+      wrappers ?= do getWrappers
+      art = art.map (s)-> "#{wrappers.wrap}#{s}#{wrappers.wrapx}"
+      .join wrappers.br
     @queue "#{word}  #{art}\n"
 
   through if passThru then plain else zd
 
-# Tags cache
-tags = {}
+getWrappers = ->
+  r = {}
+  for w in ['wrap', 'br']
+    for z in [0, 1]
+      r["#{w}#{if z then 'x' else ''}"]=tag w, close: z, group: 'zd'
+  r
 
 # Convert single DSL line to ZD
 dsl2zd = (s)->

@@ -26,5 +26,6 @@ Convert bkrs.info database to zd/fdb format
 ## Credits
   * [BKRS](http://bkrs.info/)
   * [Dictan](http://www.softex.info/)
+  * [GoldenDict](http://goldendict.org/)
   * [Node.js](http://nodejs.org/)
   * [Travis CI](https://travis-ci.org/)

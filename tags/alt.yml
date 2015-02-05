@@ -1,24 +1,20 @@
-# Default tags mapping
+# Alternative tags mapping
 
 tag: span
 zd:
-  wrap: div
-  br:   []
+  wrap: []
+  br:   br/
 tags:
   b: b
   i: i
   u: u
   ref: r
-  m: div
-  m1: div
-  m2: >
-    div style="margin-left: 1em;"
-  m3: >
-    div style="margin-left: 2em;"
-  m4: >
-    div style="margin-left: 3em;"
-  m5: >
-    div style="margin-left: 4em;"
+  m: span
+  m1: span class="m1"
+  m2: span class="m2"
+  m3: span class="m3"
+  m4: span class="m4"
+  m5: span class="m5"
   '*': font color="navy"
   p:  font color="green"
   ex: font color='gray'

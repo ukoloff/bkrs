@@ -5,9 +5,9 @@ fs = require 'fs'
 through = require 'through'
 config = require '../package'
 seq = require './seq'
-bench = require './bench'
+log = require './log'
 
-console.log "#{do bench}Creating full dictionary source..."
+log "Creating full dictionary source..."
 
 result = fs.createWriteStream 'src/bkrs.txt'
 
@@ -20,4 +20,4 @@ seq config.sources.concat config.extras
 .done ->
   do require './dumpz'
   .report
-  console.log "#{do bench}That's all folks!"
+  log "That's all folks!"

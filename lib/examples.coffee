@@ -6,7 +6,6 @@ fts = require 'full-text-search-light'
 s2t = require './s2t'
 
 ex = new fts 'BKRS'
-ex.ignore_case true
 ex.init()
 
 @article = (arr)->
@@ -24,17 +23,7 @@ ex.init()
 @_for = _for = (str)->
   ex
   .search str
-  .sort (a, b)->
-    if a.length<b.length
-      -1
-    else if a.length>b.length
-      1
-    else if a<b
-      -1
-    else if a>b
-      1
-    else
-      0
+  .sort strCmp
   .slice(0, 108)
   .map (x)->
     i: x.indexOf str
@@ -44,16 +33,8 @@ ex.init()
       -1
     else if a.i>b.i
       1
-    else if a.s.length<b.s.length
-      -1
-    else if a.s.length>b.s.length
-      1
-    else if a.s<b.s
-      -1
-    else if a.s>b.s
-      1
     else
-      0
+      strCmp a.s, b.s
   .map (z)-> z.s
 
 @for = (str)->
@@ -62,3 +43,15 @@ ex.init()
   if z.length
     z.unshift '[p]E.g.[/p]'
   z
+
+strCmp = (a, b)->
+  if a.length<b.length
+    -1
+  else if a.length>b.length
+    1
+  else if a<b
+    -1
+  else if a>b
+    1
+  else
+    0

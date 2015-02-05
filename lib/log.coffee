@@ -2,14 +2,13 @@
 # Show benchmark
 #
 
-start = null
+start = new Date()
 
-module.exports = ->
-  start ||= new Date()
+module.exports = (msg)->
   sec = Math.round (new Date()-start)/1000
   min = Math.floor sec/60
   sec -= min*60
-  "[#{i2 min}:#{i2 sec}]"
+  console.log "[#{min}:#{i2 sec}]#{msg}"
 
 i2 = (n)->
   r = String n

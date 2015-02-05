@@ -18,10 +18,10 @@ seq extras
   .pipe dumpz()
   .pipe once()
   .pipe fs.createWriteStream "src/#{x}"
+  .on 'finish', done
   require "./#{x}"
   .save out
   out.write null
-  do done
 .done ->
   require './combine'
 

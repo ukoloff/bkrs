@@ -10,7 +10,7 @@ convert = (buf)->
     r = Buffer.concat [r, data]
   x.write buf
   x.write null
-  r.toJSON()
+  b for b, i in r
 
 describe 'UTF16 converter', ->
 

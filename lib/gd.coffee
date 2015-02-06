@@ -27,7 +27,7 @@ out = for k, v of ini.out
   x
 
 seq config.sources.concat config.extras
-.step (file, done)->
+.step (i, file, done)->
   fs.createReadStream "src/#{file}"
   .on 'end', done
   .pipe out[Number file==ini.other]

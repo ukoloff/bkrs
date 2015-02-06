@@ -11,7 +11,7 @@ extras = require '../package'
   .extras
 
 seq extras
-.step (x, done)->
+.step (i, x, done)->
   log "Creating #{x}..."
   out = through()
   out

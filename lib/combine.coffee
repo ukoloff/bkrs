@@ -12,7 +12,7 @@ log "Creating full dictionary source..."
 result = fs.createWriteStream 'src/bkrs.txt'
 
 seq config.sources.concat config.extras
-.step (file, done)->
+.step (i, file, done)->
   fs.createReadStream "src/#{file}"
   .on 'end', done
   .pipe through(null, ->)

@@ -13,7 +13,9 @@ py2hz = {}
   .split /[;,]/
   .filter (x)->x
 
-@add = (hanzi, pinyin)->
+@add = (article)->
+  hanzi = article[0]
+  pinyin = article[1]
   split pinyin
   .forEach (py)->
     (py2hz[py]||=[]).push hanzi

@@ -5,7 +5,8 @@ tongwen = require 'tongwen'
 
 s2t = {}
 
-@add = (word)->
+@add = (article)->
+  word = article[0]
   return if s2t[word]
   t = tongwen.s2t word
   s2t[word] = t if t!=word

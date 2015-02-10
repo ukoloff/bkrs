@@ -8,7 +8,7 @@ examples = require './examples'
 @article = (arr)->
   return if '_'==arr[1]
 
-  py.add arr[0], arr[1]
-  s2t.add arr[0]
+  py.add arr
+  s2t.add arr
 
   @queue arr.concat examples.for arr[0]

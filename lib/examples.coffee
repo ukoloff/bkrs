@@ -23,6 +23,7 @@ ex.init()
 @_for = _for = (str)->
   ex
   .search str
+  .filter (s)->s!=str
   .sort strCmp
   .slice(0, 108)
   .map (x)->

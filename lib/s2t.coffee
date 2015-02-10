@@ -7,9 +7,11 @@ s2t = {}
 
 @add = (article)->
   word = article[0]
-  return if s2t[word]
-  t = tongwen.s2t word
-  s2t[word] = t if t!=word
+  unless t = s2t[word]
+    t = tongwen.s2t word
+    return if t==word
+    s2t[word] = t
+  article.splice 1, 0, "[p]трад.[/p] #{t}"
 
 @save = (dst)->
   for k, v of s2t

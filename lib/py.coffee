@@ -16,15 +16,12 @@ py2hz = {}
 @add = (article)->
   hanzi = article[0]
   pinyin = article[1]
-  len = article.slice(2).reduce sumLength, 0
+  len = article.slice(2).join('').length
   split pinyin
   .forEach (py)->
     (py2hz[py]||=[]).push
       h: hanzi
       n: len
-
-sumLength = (n, s)->
-  n+s.length
 
 pyLine = (s)->
   s = s.h

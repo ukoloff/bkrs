@@ -16,14 +16,29 @@ py2hz = {}
 @add = (article)->
   hanzi = article[0]
   pinyin = article[1]
+  len = article.slice(2).reduce sumLength, 0
   split pinyin
   .forEach (py)->
-    (py2hz[py]||=[]).push hanzi
+    (py2hz[py]||=[]).push
+      h: hanzi
+      n: len
+
+sumLength = (n, s)->
+  n+s.length
 
 pyLine = (s)->
+  s = s.h
   st = tongwen.s2t s
   "[ref]#{s}[/ref]#{if s!=st then " / #{st}" else ''}"
 
 @save = (dst)->
   for k, v of py2hz
+    v.sort (a, b)->
+      if a.n<b.n
+        1
+      else if a.n>b.n
+        -1
+      else
+        0
     dst.write [k].concat v.map pyLine
+  false

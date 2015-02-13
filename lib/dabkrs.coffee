@@ -5,6 +5,8 @@ py = require './py'
 s2t = require './s2t'
 examples = require './examples'
 
+@order = 1
+
 @article = (arr)->
   return if '_'==arr[1]
 

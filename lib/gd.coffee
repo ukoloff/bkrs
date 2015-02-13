@@ -9,7 +9,6 @@ through = require 'through'
 log = require './log'
 seq = require './seq'
 utf16 = require './utf16'
-config = require '../package'
 
 log 'Creating GoldenDict dictionaries...'
 
@@ -26,7 +25,7 @@ out = for k, v of ini.out
     x.write "##{p} #{q}\n"
   x
 
-seq config.sources.concat config.extras
+seq require './reorder'
 .step (i, file, done)->
   fs.createReadStream "src/#{file}"
   .on 'end', done

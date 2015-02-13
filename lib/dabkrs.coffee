@@ -8,7 +8,8 @@ examples = require './examples'
 @order = 1
 
 @article = (arr)->
-  return if '_'==arr[1]
+  return if arr[1] in ['_', '-']
+  return if 3==arr.length and arr[2] in ['-', '[m1]-[/m]']
 
   py.add arr
   s2t.add arr

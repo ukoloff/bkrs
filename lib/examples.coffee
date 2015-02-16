@@ -40,9 +40,9 @@ ex.init()
 
 @for = (str)->
   z = _for str
-  .map (x)->"[ref]#{x}[/ref]"
+  .map (x)->"[m2][ref]#{x}[/ref][/m]"
   if z.length
-    z.unshift '[p]E.g.[/p]'
+    z.unshift "[m1][p]Пример#{if z.length>1 then 'ы' else ''}[/p][/m1]"
   z
 
 strCmp = (a, b)->

@@ -75,4 +75,4 @@ reportTags = ->
   .forEach (x)->
     r[x.k] = x.v
 
-  fs.writeFile "src/tags", yaml.dump r
+  fs.writeFile "src/tags.yml", yaml.dump r

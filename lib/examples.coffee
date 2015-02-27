@@ -42,7 +42,7 @@ ex.init()
   z = _for str
   .map (x)->"[m2][ref]#{x}[/ref][/m]"
   if z.length
-    z.unshift "[m1][p]Пример#{if z.length>1 then 'ы' else ''}[/p][/m]"
+    z.unshift "[m1][c]См. также[/c]:[/m]"
   z
 
 strCmp = (a, b)->

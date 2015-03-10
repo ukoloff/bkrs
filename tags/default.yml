@@ -9,16 +9,27 @@ tags:
   i: i
   u: u
   ref: r
-  m: div
-  m1: div
+  m: &m >
+    div style="margin-top: 1em;"
+  m0: *m
+  m1: >
+    div style="margin-top: 1em; margin-left: 1em;"
   m2: >
-    div style="margin-left: 1em;"
-  m3: >
     div style="margin-left: 2em;"
-  m4: >
+  m3: >
     div style="margin-left: 3em;"
-  m5: >
+  m4: >
     div style="margin-left: 4em;"
+  m5: >
+    div style="margin-left: 5em;"
+  m6: >
+    div style="margin-left: 6em;"
+  m7: >
+    div style="margin-left: 7em;"
+  m8: >
+    div style="margin-left: 8em;"
+  m9: >
+    div style="margin-left: 9em;"
   '*': font color="navy"
   p:  font color="green"
   ex: font color='gray'

@@ -9,12 +9,17 @@ tags:
   i: i
   u: u
   ref: r
-  m: span
+  m:  &m span class="m0"
+  m0: *m
   m1: span class="m1"
   m2: span class="m2"
   m3: span class="m3"
   m4: span class="m4"
   m5: span class="m5"
+  m6: span class="m6"
+  m7: span class="m7"
+  m8: span class="m8"
+  m9: span class="m9"
   '*': font color="navy"
   p:  font color="green"
   ex: font color='gray'

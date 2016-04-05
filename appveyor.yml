@@ -1,0 +1,26 @@
+version: 1.0.{build}-{branch}
+
+cache:
+  - node_modules
+
+environment:
+  matrix:
+    - NOV: 5
+
+platform:
+  - x86
+
+install:
+  - ps: Install-Product node $env:NOV $env:PLATFORM
+  - npm install
+
+build: off
+
+before_test:
+  - node -v
+  - npm -v
+
+test_script:
+  - npm test
+  - node lib/fetch
+  - npm start --tags=dsl

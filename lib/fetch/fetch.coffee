@@ -9,9 +9,8 @@ base = 'http://bkrs.info/p47'
 console.log "Fetching #{base}..."
 
 request base
-.pipe tr = do trumpet
-
-tr.selectAll 'a[href$=gz]', (a)->
+.pipe do trumpet
+.selectAll 'a[href$=gz]', (a)->
   a.getAttribute 'href', (href)->
     return unless /// /(\w+)_\d+[.]gz$ ///.test href
     console.log "Fetching #{x = url.resolve base, href}..."

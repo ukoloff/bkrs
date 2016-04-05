@@ -27,6 +27,7 @@
     "url": "https://github.com/ukoloff/bkrs/issues"
   },
   "homepage": "https://github.com/ukoloff/bkrs",
+  "sourceURL": "http://bkrs.info/p47",
   "sources": [
     "examples",
     "dabkrs",

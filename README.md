@@ -1,6 +1,7 @@
 # bkrs
 
 [![Build Status](https://travis-ci.org/ukoloff/bkrs.svg?branch=master)](https://travis-ci.org/ukoloff/bkrs)
+[![Build status](https://ci.appveyor.com/api/projects/status/t20nx4hrs70ai4kt?svg=true)](https://ci.appveyor.com/project/ukoloff/bkrs)
 
 Convert bkrs.info database to Dictan(zd/fdb) and GoldenDict(dsl) format
 
@@ -34,3 +35,4 @@ In addition src/*.dsl are good for GoldenDict.
   * [GoldenDict](http://goldendict.org/)
   * [Node.js](http://nodejs.org/)
   * [Travis CI](https://travis-ci.org/)
+  * [AppVeyor](http://www.appveyor.com/)

@@ -1,10 +1,12 @@
 {
   "name": "bkrs",
+  "private": true,
   "version": "0.0.0",
   "description": "Convert bkrs.info database to zd format",
+  "main": "lib",
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha",
-    "start": "node lib/convert"
+    "test": "node_modules/.bin/mocha",
+    "start": "node ."
   },
   "repository": {
     "type": "git",

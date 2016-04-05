@@ -4,7 +4,8 @@ path = require 'path'
 request = require 'request'
 trumpet = require 'trumpet'
 
-base = 'http://bkrs.info/p47'
+base = require '../../package'
+  .sourceURL
 
 console.log "Fetching #{base}..."
 

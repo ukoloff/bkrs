@@ -26,6 +26,6 @@ test_script:
   - npm start --tags=dsl
 
 artifacts:
-  - path: bkrs.zip
+  - path: src/bkrs.zip
     name: BKRS for GoldenDict
     type: zip

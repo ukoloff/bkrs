@@ -3,7 +3,7 @@ yazl = require 'yazl'
 log = require './log'
 
 z = new yazl.ZipFile()
-z.outputStream.pipe fs.createWriteStream 'bkrs.zip'
+z.outputStream.pipe fs.createWriteStream 'src/bkrs.zip'
 .on 'close', ->
   log 'ZIP created!'
 

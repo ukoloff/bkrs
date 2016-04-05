@@ -45,7 +45,8 @@
     "split": "~0.3.3",
     "through": "~2.3.6",
     "tongwen": "~0.3.2",
-    "trumpet": "^1.7.2"
+    "trumpet": "^1.7.2",
+    "yazl": "^2.3.0"
   },
   "devDependencies": {
     "mocha": "~2.1.0",

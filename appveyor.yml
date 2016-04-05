@@ -24,3 +24,8 @@ test_script:
   - npm test
   - node lib/fetch
   - npm start --tags=dsl
+
+artifacts:
+  - path: src/bkrs.zip
+    name: BKRS for GoldenDict
+    type: zip

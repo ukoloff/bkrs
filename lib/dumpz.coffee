@@ -66,6 +66,13 @@ dsl2zd = (s)->
       text
   zd
 
+fn.passThru = passThru
+
+fn.ext = if passThru
+  'dsl' # For new Dictan Converter
+else
+  'txt' # For makezd
+
 fn.report = ->
   if passThru
     require './gd'

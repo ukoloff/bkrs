@@ -10,7 +10,7 @@ log = require './log'
 log "Converting abbreviations..."
 
 fs.createReadStream "extras/abrv.dsl"
-.pipe split (arr)-> @queue arr
+.pipe do split
 .pipe dumpz()
 .on 'end', -> require './extras'
 .pipe fs.createWriteStream "src/abbreviations.#{dumpz.ext}"

@@ -16,7 +16,7 @@ seq sources
   log "Parsing #{file}..."
   fs.createReadStream "src/#{file}_#{ts}.gz"
   .pipe zlib.createUnzip()
-  .pipe split params.article or (arr)-> @queue arr
+  .pipe split params.article
   .pipe dumpz()
   .on('end', done)
   .pipe fs.createWriteStream "src/#{file}"

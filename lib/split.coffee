@@ -5,7 +5,7 @@
 split = require 'split'
 through = require 'through'
 
-module.exports = (cb)->
+module.exports = (cb = (arr)-> @queue arr)->
   buf = []
 
   flush = ->

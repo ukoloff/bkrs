@@ -3,9 +3,9 @@
 #
 
 split = require 'split'
-through = require 'through'
+through2 = require 'through2'
 
-module.exports = (cb)->
+module.exports = (cb = (arr)-> @push arr)->
   buf = []
 
   flush = ->
@@ -34,12 +34,13 @@ module.exports = (cb)->
     $ line
     return
 
-  write = (buf)->
+  write = (buf, enc, cb)->
     s.write buf
+    do cb
 
-  end = (buf)->
+  end = (cb)->
     s.end()
     do flush
-    @queue null
+    do cb
 
-  self = through write, end
+  self = through2.obj write, end

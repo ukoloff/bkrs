@@ -2,7 +2,7 @@
 # Run extras generations
 #
 fs = require 'fs'
-through = require 'through'
+through2 = require 'through2'
 
 log = require './log'
 dumpz = require './dumpz'
@@ -13,24 +13,13 @@ extras = require '../package'
 seq extras
 .step (i, x, done)->
   log "Creating #{x}..."
-  out = through()
+  out = through2.obj()
   out
-  .pipe dumpz()
-  .pipe once()
+  .pipe dumpz x
   .pipe fs.createWriteStream "src/#{x}"
   .on 'finish', done
   require "./#{x}"
   .save out
-  out.write null
+  out.end()
 .done ->
   require './combine'
-
-# Write to file in a single piece
-once = ->
-  buf = ''
-  write = (data)->
-    buf += data
-  end = ->
-    @queue buf if buf.length
-    @queue null
-  through write, end

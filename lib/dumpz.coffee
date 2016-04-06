@@ -4,10 +4,11 @@
 
 fs = require 'fs'
 yaml = require 'js-yaml'
-through = require 'through'
+through2 = require 'through2'
 dsl = require './dsl'
 tag = require './tag'
 log = require './log'
+counts = require './counts'
 
 passThru = 'dsl'==process.env.npm_config_tags
 
@@ -15,7 +16,7 @@ passThru = 'dsl'==process.env.npm_config_tags
 tags = {}
 wrappers = null
 
-module.exports = fn = ->
+module.exports = fn = (name)->
   start = new Date
   ticks = 0
   seconds = -1
@@ -31,11 +32,11 @@ module.exports = fn = ->
 
   indent = (s, i)-> "#{if i then ' ' else ''}#{s}"
 
-  plain = (art)->
+  plain = (art, enc, cb)->
     do tick
-    @queue art.map(indent).join("\n")+"\n\n"
+    cb null, art.map(indent).join("\n")+"\n\n"
 
-  zd = (art)->
+  zd = (art, enc, cb)->
     do tick
     word = art[0].replace /\s+/, ' '
     art = art.slice(1).map dsl2zd
@@ -45,9 +46,18 @@ module.exports = fn = ->
       wrappers ?= do getWrappers
       art = art.map (s)-> "#{wrappers.wrap}#{s}#{wrappers.wrapx}"
       .join wrappers.br
-    @queue "#{word}  #{art}\n"
+    cb null, "#{word}  #{art}\n"
 
-  through if passThru then plain else zd
+  write = if passThru
+    plain
+  else
+    zd
+
+  end = (cb)->
+    counts name, ticks
+    do cb
+
+  through2.obj write, end
 
 getWrappers = ->
   r = {}

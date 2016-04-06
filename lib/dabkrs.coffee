@@ -14,4 +14,4 @@ examples = require './examples'
   py.add arr
   s2t.add arr
 
-  @queue arr.concat examples.for arr[0]
+  @push arr.concat examples.for arr[0]

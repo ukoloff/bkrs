@@ -18,7 +18,7 @@ ex.init()
   s2t.add arr
   ex.add arr[0]
 
-  @queue arr
+  @push arr
 
 @_for = _for = (str)->
   ex

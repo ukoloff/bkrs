@@ -28,14 +28,17 @@ test_script:
   - node lib/fetch
   - npm start
   - npm start --tags=dsl
-  - src\makezd -s -cp1:65001 -cp2:65001 src/articles.txt bkrs.zd
-  - src\dictzip.exe src/bkrs.dsl
-  - src\dictzip.exe src/bruks.dsl
-  - 7z a bkrs.zip ./src/*.dsl.dz ./extras/*.bmp
+  - src\makezd -cp1:65001 -cp2:65001 -a:src/abbreviations.txt src/articles.txt bkrs.zd
+  - src\dictzip.exe -k src/b*.dsl
+  - 7z a bkrs.zip ./src/b*.dsl ./extras/*.bmp
+  - 7z a bkrs-min.zip ./src/*.dsl.dz ./extras/*.bmp
 
 artifacts:
   - path: bkrs.zip
     name: BKRS for GoldenDict
+    type: zip
+  - path: bkrs-min.zip
+    name: BKRS for Android GoldenDict
     type: zip
   - path: bkrs.zd
     name: BKRS for Dictan

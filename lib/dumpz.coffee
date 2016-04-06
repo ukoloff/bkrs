@@ -4,7 +4,7 @@
 
 fs = require 'fs'
 yaml = require 'js-yaml'
-through = require 'through'
+through2 = require 'through2'
 dsl = require './dsl'
 tag = require './tag'
 log = require './log'
@@ -31,11 +31,11 @@ module.exports = fn = ->
 
   indent = (s, i)-> "#{if i then ' ' else ''}#{s}"
 
-  plain = (art)->
+  plain = (art, enc, cb)->
     do tick
-    @queue art.map(indent).join("\n")+"\n\n"
+    cb null, art.map(indent).join("\n")+"\n\n"
 
-  zd = (art)->
+  zd = (art, enc, cb)->
     do tick
     word = art[0].replace /\s+/, ' '
     art = art.slice(1).map dsl2zd
@@ -45,9 +45,9 @@ module.exports = fn = ->
       wrappers ?= do getWrappers
       art = art.map (s)-> "#{wrappers.wrap}#{s}#{wrappers.wrapx}"
       .join wrappers.br
-    @queue "#{word}  #{art}\n"
+    cb null, "#{word}  #{art}\n"
 
-  through if passThru then plain else zd
+  through2.obj if passThru then plain else zd
 
 getWrappers = ->
   r = {}

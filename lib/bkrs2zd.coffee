@@ -10,6 +10,9 @@ dumpz = require './dumpz'
 seq = require './seq'
 sources = require './parts'
 log = require './log'
+counts = require './counts'
+
+counts "version", ts
 
 seq sources
 .step (file, params, done)->
@@ -17,7 +20,7 @@ seq sources
   fs.createReadStream "src/#{file}_#{ts}.gz"
   .pipe zlib.createUnzip()
   .pipe split params.article
-  .pipe dumpz()
+  .pipe dumpz file
   .on('end', done)
   .pipe fs.createWriteStream "src/#{file}"
 .done ->

@@ -11,6 +11,6 @@ log "Converting abbreviations..."
 
 fs.createReadStream "extras/abrv.dsl"
 .pipe do split
-.pipe dumpz()
+.pipe dumpz 'abbr'
 .on 'end', -> require './extras'
 .pipe fs.createWriteStream "src/abbreviations.#{dumpz.ext}"

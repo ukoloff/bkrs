@@ -15,7 +15,7 @@ seq extras
   log "Creating #{x}..."
   out = through2.obj()
   out
-  .pipe dumpz()
+  .pipe dumpz x
   .pipe fs.createWriteStream "src/#{x}"
   .on 'finish', done
   require "./#{x}"

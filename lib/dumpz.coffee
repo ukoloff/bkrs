@@ -8,6 +8,7 @@ through2 = require 'through2'
 dsl = require './dsl'
 tag = require './tag'
 log = require './log'
+counts = require './counts'
 
 passThru = 'dsl'==process.env.npm_config_tags
 
@@ -15,7 +16,7 @@ passThru = 'dsl'==process.env.npm_config_tags
 tags = {}
 wrappers = null
 
-module.exports = fn = ->
+module.exports = fn = (name)->
   start = new Date
   ticks = 0
   seconds = -1
@@ -47,7 +48,16 @@ module.exports = fn = ->
       .join wrappers.br
     cb null, "#{word}  #{art}\n"
 
-  through2.obj if passThru then plain else zd
+  write = if passThru
+    plain
+  else
+    zd
+
+  end = (cb)->
+    counts name, ticks
+    do cb
+
+  through2.obj write, end
 
 getWrappers = ->
   r = {}

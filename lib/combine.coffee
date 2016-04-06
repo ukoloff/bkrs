@@ -6,6 +6,7 @@ through = require 'through'
 dumpz = require './dumpz'
 seq = require './seq'
 log = require './log'
+counts = require './counts'
 
 log "Creating Dictan source..."
 
@@ -20,3 +21,4 @@ seq require './reorder'
 .done ->
   do dumpz.report
   log "That's all folks!"
+  do counts.report

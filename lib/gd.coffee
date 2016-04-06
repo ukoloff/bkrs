@@ -30,5 +30,3 @@ seq require './reorder'
   fs.createReadStream "src/#{file}"
   .on 'end', done
   .pipe out[Number file==ini.other]
-.done ->
-  require './zip'

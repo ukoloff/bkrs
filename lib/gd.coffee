@@ -30,3 +30,12 @@ seq require './reorder'
   fs.createReadStream "src/#{file}"
   .on 'end', done
   .pipe out[Number file==ini.other]
+.done ->
+  fs.createReadStream "src/abbreviations.dsl"
+  .on 'end', rename
+  .pipe out[2]
+
+rename = ->
+  for k of ini.out when /^b/.test k
+    fs.createReadStream 'src/abrv.dsl'
+    .pipe fs.createWriteStream "src/#{k}_abrv.dsl"

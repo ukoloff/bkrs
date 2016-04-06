@@ -12,7 +12,7 @@ utf16 = require './utf16'
 
 log 'Creating GoldenDict dictionaries...'
 
-ini = yaml.safeLoad  fs.readFileSync path.join __dirname, 'gd.yml'
+ini = yaml.safeLoad  fs.readFileSync path.join __dirname, '..', 'extras', 'gd.yml'
 
 out = for k, v of ini.out
   x = through(null, ->)

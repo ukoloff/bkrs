@@ -8,6 +8,10 @@ out:
     name: БРуКС
     index_language: Russian
     contents_language: Chinese
+  abrv:
+    name: abbreviations
+    index_language: Russian
+    contents_language: Russian
 common:
   source: http://bkrs.info/
   converter: https://github.com/ukoloff/bkrs

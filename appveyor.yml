@@ -1,0 +1,44 @@
+version: 1.0.{build}-{branch}
+
+cache:
+  - node_modules
+
+environment:
+  matrix:
+    - NOV: 5
+
+platform:
+  - x86
+
+install:
+  - curl -fsSL https://github.com/ukoloff/bkrs/wiki/tools/ZD_Tools_1.3.zip -o src/zdtools.zip
+  - 7z x src/zdtools.zip -osrc makezd.exe
+  - curl -fsSL https://github.com/ukoloff/bkrs/wiki/tools/dictzip.exe -o src/dictzip.exe
+  - ps: Install-Product node $env:NOV $env:PLATFORM
+  - npm install
+
+build: off
+
+before_test:
+  - node -v
+  - npm -v
+
+test_script:
+  - npm test
+  - node lib/fetch
+  - npm start
+  - npm start --tags=dsl
+  - src\makezd -cp1:65001 -cp2:65001 -a:src/abbreviations.txt src/articles.txt bkrs.zd
+  - src\dictzip.exe -k src/b*.dsl
+  - 7z a bkrs.zip ./src/b*.dsl ./extras/*.bmp
+  - 7z a bkrs-min.zip ./src/*.dsl.dz ./extras/*.bmp
+
+artifacts:
+  - path: bkrs.zip
+    name: BKRS for GoldenDict
+    type: zip
+  - path: bkrs-min.zip
+    name: BKRS for Android GoldenDict
+    type: zip
+  - path: bkrs.zd
+    name: BKRS for Dictan

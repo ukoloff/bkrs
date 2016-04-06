@@ -16,13 +16,27 @@ tags = {}
 wrappers = null
 
 module.exports = fn = ->
+  start = new Date
+  ticks = 0
+  seconds = -1
+
+  tick = if process.stdout.isTTY
+    ->
+      ticks++
+      s = Math.floor (new Date()-start)/1000
+      return if seconds==s
+      process.stdout.write "#{ticks}/#{seconds=s}\r"
+  else
+    ->
 
   indent = (s, i)-> "#{if i then ' ' else ''}#{s}"
 
   plain = (art)->
+    do tick
     @queue art.map(indent).join("\n")+"\n\n"
 
   zd = (art)->
+    do tick
     word = art[0].replace /\s+/, ' '
     art = art.slice(1).map dsl2zd
     if 1==art.length
@@ -51,6 +65,13 @@ dsl2zd = (s)->
     else
       text
   zd
+
+fn.passThru = passThru
+
+fn.ext = if passThru
+  'dsl' # For new Dictan Converter
+else
+  'txt' # For makezd
 
 fn.report = ->
   if passThru

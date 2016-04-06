@@ -28,10 +28,11 @@ test_script:
   - node lib/fetch
   - npm start
   - npm start --tags=dsl
-  - src/makezd -lcid:9 -s -cp1:65001 -cp2:65001 src/articles.txt bkrs.zd
-  - src/dictzip.exe src/bkrs.dsl
-  - src/dictzip.exe src/bruks.dsl
+  - src\makezd -lcid:9 -s -cp1:65001 -cp2:65001 src/articles.txt bkrs.zd
+  - src\dictzip.exe src/bkrs.dsl
+  - src\dictzip.exe src/bruks.dsl
   - 7z a bkrs.zip ./src/*.dsl.dz
+
 artifacts:
   - path: bkrs.zip
     name: BKRS for GoldenDict

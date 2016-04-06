@@ -7,7 +7,7 @@ dumpz = require './dumpz'
 seq = require './seq'
 log = require './log'
 
-log "Creating full dictionary source..."
+log "Creating Dictan source..."
 
 result = fs.createWriteStream "src/articles.#{dumpz.ext}"
 

@@ -2,7 +2,7 @@
 # Run extras generations
 #
 fs = require 'fs'
-through = require 'through'
+through2 = require 'through2'
 
 log = require './log'
 dumpz = require './dumpz'
@@ -13,7 +13,7 @@ extras = require '../package'
 seq extras
 .step (i, x, done)->
   log "Creating #{x}..."
-  out = through()
+  out = through2.obj()
   out
   .pipe dumpz()
   .pipe once()
@@ -21,16 +21,17 @@ seq extras
   .on 'finish', done
   require "./#{x}"
   .save out
-  out.write null
+  out.end()
 .done ->
   require './combine'
 
 # Write to file in a single piece
 once = ->
   buf = ''
-  write = (data)->
+  write = (data, enc, cb)->
     buf += data
-  end = ->
-    @queue buf if buf.length
-    @queue null
-  through write, end
+    do cb
+  end = (cb)->
+    @push buf if buf.length
+    do cb
+  through2 write, end

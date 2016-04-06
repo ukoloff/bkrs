@@ -16,7 +16,6 @@ seq extras
   out = through2.obj()
   out
   .pipe dumpz()
-  .pipe once()
   .pipe fs.createWriteStream "src/#{x}"
   .on 'finish', done
   require "./#{x}"
@@ -24,14 +23,3 @@ seq extras
   out.end()
 .done ->
   require './combine'
-
-# Write to file in a single piece
-once = ->
-  buf = ''
-  write = (data, enc, cb)->
-    buf += data
-    do cb
-  end = (cb)->
-    @push buf if buf.length
-    do cb
-  through2 write, end

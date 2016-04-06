@@ -44,6 +44,7 @@
     "request": "^2.69.0",
     "split": "~0.3.3",
     "through": "~2.3.6",
+    "through2": "^2.0.1",
     "tongwen": "~0.3.2",
     "trumpet": "^1.7.2"
   },

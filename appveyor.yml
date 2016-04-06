@@ -11,6 +11,9 @@ platform:
   - x86
 
 install:
+  - curl -fsSL https://github.com/ukoloff/bkrs/wiki/tools/ZD_Tools_1.3.zip -o src/zdtools.zip
+  - 7z x src/zdtools.zip -osrc makezd.exe
+  - curl -fsSL https://github.com/ukoloff/bkrs/wiki/tools/dictzip.exe -o src/dictzip.exe
   - ps: Install-Product node $env:NOV $env:PLATFORM
   - npm install
 
@@ -23,9 +26,15 @@ before_test:
 test_script:
   - npm test
   - node lib/fetch
+  - npm start
   - npm start --tags=dsl
-
+  - src/makezd -lcid:9 -s -cp1:65001 -cp2:65001 src/articles.txt bkrs.zd
+  - src/dictzip.exe src/bkrs.dsl
+  - src/dictzip.exe src/bruks.dsl
+  - 7z a bkrs.zip ./src/*.dsl.dz
 artifacts:
-  - path: src/bkrs.zip
+  - path: bkrs.zip
     name: BKRS for GoldenDict
     type: zip
+  - path: bkrs.zd
+    name: BKRS for Dictan

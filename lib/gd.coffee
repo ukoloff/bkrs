@@ -4,38 +4,46 @@
 fs = require 'fs'
 path = require 'path'
 yaml = require 'js-yaml'
-through = require 'through'
+multistream = require 'multistream'
 
 log = require './log'
-seq = require './seq'
 utf16 = require './utf16'
 
 log 'Creating GoldenDict dictionaries...'
 
-ini = yaml.safeLoad  fs.readFileSync path.join __dirname, '..', 'extras', 'gd.yml'
+outs = {}     # Output streams
+joiner = 0    # Joined stream
+singles = {}  # Single inputs
 
-out = for k, v of ini.out
-  x = through(null, ->)
-  x
-  .pipe utf16()
-  .pipe fs.createWriteStream "src/#{k}.dsl"
-  for p, q of v
+# Create output files and write headers
+ini = yaml.safeLoad  fs.readFileSync path.join __dirname, '../extras/gd.yml'
+for k, v of ini.out
+  outs[k] = x = utf16()
+  x.pipe fs.createWriteStream "src/#{k}.dsl"
+
+  # Write header
+  for p, q of v when not /^_/.test p
     x.write "##{p.toUpperCase()} \"#{q}\"\n"
   for p, q of ini.common
     x.write "##{p} #{q}\n"
-  x
 
-seq require './reorder'
-.step (i, file, done)->
-  fs.createReadStream "src/#{file}"
-  .on 'end', done
-  .pipe out[Number file==ini.other]
-.done ->
-  fs.createReadStream "src/abbreviations.dsl"
-  .on 'end', rename
-  .pipe out[2]
+  if v._from
+    singles[v._from] = 1
+    fs.createReadStream "src/#{v._from}"
+    .pipe x
+  else
+    joiner = x
 
-rename = ->
+# Generate abbreviations
+outs['abrv'].on 'finish', ->
+  # Copy abbreviations to real names
   for k of ini.out when /^b/.test k
     fs.createReadStream 'src/abrv.dsl'
     .pipe fs.createWriteStream "src/#{k}_abrv.dsl"
+
+# Merge bkrs.dsl
+joined = for file in require './reorder' when not singles[file]
+  fs.createReadStream "src/#{file}"
+multistream joined
+.pipe joiner
+# .on 'finish', ->

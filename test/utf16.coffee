@@ -1,15 +1,13 @@
-through = require 'through'
+through2 = require 'through2'
 utf16 = require '../lib/utf16'
 
 convert = (buf)->
   r = new Buffer 0
-  x = through()
-  x
-  .pipe utf16()
-  .pipe through (data)->
+  x = utf16()
+  x.pipe through2 (data, enc, cb)->
     r = Buffer.concat [r, data]
-  x.write buf
-  x.write null
+    do cb
+  x.end buf
   b for b in r
 
 describe 'UTF16 converter', ->

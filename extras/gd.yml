@@ -1,4 +1,3 @@
-other: dabruks
 out:
   bkrs:
     name: БКРС
@@ -8,10 +7,13 @@ out:
     name: БРуКС
     index_language: Russian
     contents_language: Chinese
+    _from: dabruks
   abrv:
     name: abbreviations
     index_language: Russian
     contents_language: Russian
+    _from: abbreviations.dsl
+    
 common:
   source: http://bkrs.info/
   converter: https://github.com/ukoloff/bkrs

@@ -26,8 +26,8 @@ before_test:
 test_script:
   - npm test
   - node lib/fetch
-  - npm start
   - npm start --tags=dsl
+  - npm start
   - src\makezd -cp1:65001 -cp2:65001 -a:src/abbreviations.txt src/articles.txt bkrs.zd
   - src\dictzip.exe -k src/b*.dsl
   - 7z a bkrs.zip ./src/b*.dsl ./extras/*.bmp
@@ -44,3 +44,5 @@ artifacts:
     name: BKRS for Dictan
   - path: src/counts.yml
     name: Some statistics
+  - path: src/tags.yml
+    name: Used DSL tags

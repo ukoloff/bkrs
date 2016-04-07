@@ -32,6 +32,7 @@ test_script:
   - src\dictzip.exe -k src/b*.dsl
   - 7z a bkrs.zip ./src/b*.dsl ./extras/*.bmp
   - 7z a bkrs-min.zip ./src/*.dsl.dz ./extras/*.bmp
+  - copy src/*.yml .
 
 artifacts:
   - path: bkrs.zip
@@ -42,5 +43,5 @@ artifacts:
     type: zip
   - path: bkrs.zd
     name: BKRS for Dictan
-  - path: src/*.yml
+  - path: *.yml
     name: Some statistics

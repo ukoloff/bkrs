@@ -43,5 +43,5 @@ artifacts:
     type: zip
   - path: bkrs.zd
     name: BKRS for Dictan
-  - path: *.yml
+  - path: ./*.yml
     name: Some statistics

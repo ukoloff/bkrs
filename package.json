@@ -41,6 +41,7 @@
     "coffee-script": "~1.9.0",
     "full-text-search-light": "0.0.7",
     "js-yaml": "~3.2.5",
+    "multistream": "^2.0.5",
     "request": "^2.69.0",
     "split": "~0.3.3",
     "through": "~2.3.6",

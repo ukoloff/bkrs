@@ -6,6 +6,7 @@ convert = (buf)->
   x = utf16()
   x.pipe through2 (data, enc, cb)->
     r = Buffer.concat [r, data]
+    do cb
   x.end buf
   b for b in r
 

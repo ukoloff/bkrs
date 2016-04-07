@@ -21,14 +21,14 @@ module.exports = fn = (name)->
   ticks = 0
   seconds = -1
 
-  tick = if process.stdout.isTTY
-    ->
-      ticks++
-      s = Math.floor (new Date()-start)/1000
-      return if seconds==s
-      process.stdout.write "#{ticks}/#{seconds=s}\r"
-  else
-    ->
+  skipProgress = !process.stdout.isTTY
+
+  tick = ->
+    ticks++
+    return if skipProgress
+    s = Math.floor (new Date()-start)/1000
+    return if seconds==s
+    process.stdout.write "#{ticks}/#{seconds=s}\r"
 
   indent = (s, i)-> "#{if i then ' ' else ''}#{s}"
 

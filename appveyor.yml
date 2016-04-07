@@ -42,7 +42,5 @@ artifacts:
     type: zip
   - path: bkrs.zd
     name: BKRS for Dictan
-  - path: src/counts.yml
+  - path: src/*.yml
     name: Some statistics
-  - path: src/tags.yml
-    name: Used DSL tags

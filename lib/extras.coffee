@@ -22,4 +22,4 @@ seq extras
   .save out
   out.end()
 .done ->
-  require './combine'
+  require './dictan'

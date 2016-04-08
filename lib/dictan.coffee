@@ -17,4 +17,4 @@ multistream parts.map (file)->
 .on 'finish', ->
   do dumpz.report
   log "That's all folks!"
-  counts.report !dumpz.passThru
+  counts.report dumpz.passThru

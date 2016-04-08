@@ -21,6 +21,6 @@ api = process.env.APPVEYOR_API_URL
     'Content-Length': body.length
 
   http.request z
-  .end body
   .on 'error', (e)->
     console.error "HTTP error: #{e.message}"
+  .end body

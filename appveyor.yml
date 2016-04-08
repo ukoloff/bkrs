@@ -30,6 +30,7 @@ test_script:
   - npm start
 
 after_test:
+  - appveyor AddMessage "Start converting/packing" -Category Information -Details "Wait a minute..." 
   - src\makezd -cp1:65001 -cp2:65001 -a:src/abbreviations.txt src/articles.txt bkrs.zd
   - src\dictzip.exe -k src/b*.dsl
   - 7z a bkrs.zip ./src/b*.dsl ./extras/*.bmp

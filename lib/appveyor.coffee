@@ -6,12 +6,13 @@ url = require 'url'
 
 api = process.env.APPVEYOR_API_URL
 
-@message = (msg)->
+@message = (msg, details)->
   return unless api
 
   body = JSON.stringify
     message: msg
     category: 'info'
+    details: details
 
   z = url.parse api
   z.method = 'POST'

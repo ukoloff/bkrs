@@ -5,6 +5,7 @@
   "description": "Convert bkrs.info database to zd format",
   "main": "lib",
   "scripts": {
+    "postinstall": "node lib/install",
     "test": "node_modules/.bin/mocha",
     "start": "node ."
   },

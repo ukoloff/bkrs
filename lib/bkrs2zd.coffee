@@ -12,6 +12,9 @@ sources = require './parts'
 log = require './log'
 counts = require './counts'
 
+require './appveyor'
+.message "Using BKRS v#{ts}"
+
 counts "version", ts
 
 seq sources

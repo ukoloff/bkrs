@@ -107,6 +107,4 @@ reportTags = ->
     r[x.k] = x.v
 
   counts 'tags', Object.keys(r).length
-  fs.writeFile "src/tags.yml", dump = yaml.dump r
-  require './appveyor'
-  .message dump
+  fs.writeFile "src/tags.yml", yaml.dump r

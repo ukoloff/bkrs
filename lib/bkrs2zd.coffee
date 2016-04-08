@@ -11,10 +11,10 @@ seq = require './seq'
 sources = require './parts'
 log = require './log'
 counts = require './counts'
+appveyor = require './appveyor'
 
-if dumpz.passThru
-  require './appveyor'
-  .message "Using BKRS v#{ts}"
+appveyor.message "Using BKRS v#{ts}" if dumpz.passThru
+appveyor.message "#{if dumpz.passThru then 'DSL' else 'HTML'} pass"
 
 counts "version", ts
 

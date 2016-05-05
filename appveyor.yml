@@ -1,5 +1,9 @@
 version: 1.0.{build}-{branch}
 
+branches:
+  only:
+    - master
+
 cache:
   - node_modules
 

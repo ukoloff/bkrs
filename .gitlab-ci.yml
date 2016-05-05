@@ -1,4 +1,4 @@
-image: node:5
+image: node:4
 
 cache:
   paths:
@@ -16,4 +16,3 @@ test:
   - npm test
   - node lib/fetch
   - npm start --tags=dsl
-  - npm start

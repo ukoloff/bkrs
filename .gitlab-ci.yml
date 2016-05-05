@@ -8,7 +8,6 @@ test:
   before_script:
   - node -v
   - npm -v
-  - apt-get install -y dictzip zip
   - npm install
 
   script:

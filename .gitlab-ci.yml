@@ -1,0 +1,18 @@
+image: node
+
+cache:
+  paths:
+  - node_modules/
+
+test:
+  before_script:
+  - node -v
+  - npm -v
+  - apt-get install -y dictzip zip
+  - npm install
+
+  script:
+  - npm test
+  - node lib/fetch
+  - npm start --tags=dsl
+  - npm start

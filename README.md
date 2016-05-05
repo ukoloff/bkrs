@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ukoloff/bkrs.svg?branch=master)](https://travis-ci.org/ukoloff/bkrs)
 [![Build status](https://ci.appveyor.com/api/projects/status/t20nx4hrs70ai4kt?svg=true)](https://ci.appveyor.com/project/ukoloff/bkrs)
+[![build status](https://gitlab.com/ukoloff/bkrs/badges/gitlab/build.svg)](https://gitlab.com/ukoloff/bkrs/commits/gitlab)
 
 Convert bkrs.info database to Dictan(zd/fdb/dsl) and GoldenDict(dsl) format
 

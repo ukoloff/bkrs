@@ -11,9 +11,16 @@ test:
   - node -v
   - npm -v
   - npm install
-  - node lib/install
 
   script:
   - npm test
   - node lib/fetch
   - npm start --tags=dsl
+  - dictzip -k src/b*.dsl
+  - mkdir public
+  - zip public/bkrs.zip ./src/b*.dsl ./extras/*.bmp
+  - zip public/bkrs-min.zip ./src/*.dsl.dz ./extras/*.bmp
+
+  artifacts:
+    paths:
+    - public

@@ -3,6 +3,8 @@ url = require 'url'
 path = require 'path'
 request = require 'request'
 trumpet = require 'trumpet'
+require '../install'  # For GitLab
+
 
 base = require '../../package'
   .sourceURL

@@ -1,4 +1,4 @@
-image: node
+image: node:5
 
 cache:
   paths:
@@ -6,6 +6,8 @@ cache:
 
 test:
   before_script:
+  - apt-get update -qq
+  - apt-get install -y dictzip zip
   - node -v
   - npm -v
   - npm install

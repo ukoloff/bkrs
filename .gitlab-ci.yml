@@ -10,10 +10,10 @@ pages:
   before_script:
   - apt-get update -qq
   - apt-get install -y dictzip zip
-  - npm install npm@latest -g
+  - npm install npm@latest -g -q
   - node -v
   - npm -v
-  - npm install
+  - npm install -q
 
   script:
   - npm test

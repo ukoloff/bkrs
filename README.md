@@ -46,9 +46,13 @@ In addition src/*.dsl are good for GoldenDict.
 
 This converter runs every night with fresh BKRS sources. Generated files are:
 
-  * [bkrs.zd](https://ci.appveyor.com/api/projects/ukoloff/bkrs/artifacts/bkrs.zd) - for Dictan
-  * [bkrs.zip](https://ci.appveyor.com/api/projects/ukoloff/bkrs/artifacts/bkrs.zip) - for GoldenDict
-  * [bkrs-min.zip](https://ci.appveyor.com/api/projects/ukoloff/bkrs/artifacts/bkrs-min.zip) - for GoldenDict on Adroid (packed with dictzip)
+  * [bkrs.zd](https://ci.appveyor.com/api/projects/ukoloff/bkrs/artifacts/bkrs.zd) - for
+    Dictan
+  * [bkrs.zip](https://ci.appveyor.com/api/projects/ukoloff/bkrs/artifacts/bkrs.zip)
+    ([mirror](http://ukoloff.gitlab.io/bkrs/bkrs.zip)) - for GoldenDict
+  * [bkrs-min.zip](https://ci.appveyor.com/api/projects/ukoloff/bkrs/artifacts/bkrs-min.zip)
+    ([mirror](http://ukoloff.gitlab.io/bkrs/bkrs-min.zip)) - for GoldenDict on Android
+    (packed with dictzip)
 
 ## Development
 
@@ -64,3 +68,4 @@ This converter runs every night with fresh BKRS sources. Generated files are:
   * [DictZip@win32](https://github.com/Tvangeste/dictzip-win32/releases)
   * [Travis CI](https://travis-ci.org/)
   * [AppVeyor](http://www.appveyor.com/)
+  * [GitLab](https://gitlab.com/)

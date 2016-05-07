@@ -8,8 +8,10 @@ cache:
   - node_modules
 
 environment:
-  matrix:
-    - NOV: 5
+  NOV: 5
+  GITLAB_TRIGGER: https://gitlab.com/api/v3/projects/1151002/trigger/builds
+  GITLAB_TOKEN:
+    secure: 1lnMAQ+5fA2qlOUv4uZZIv7PMLqzLp7lPIV2tfQ+BGA=
 
 platform:
   - x86
@@ -29,6 +31,7 @@ before_test:
 
 test_script:
   - npm test
+  - node lib/gitlab
   - node lib/fetch
   - npm start --tags=dsl
   - npm start

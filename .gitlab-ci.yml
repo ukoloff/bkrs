@@ -10,6 +10,7 @@ pages:
   before_script:
   - apt-get update -qq
   - apt-get install -y dictzip zip
+  - npm install npm@latest -g
   - node -v
   - npm -v
   - npm install
@@ -20,8 +21,8 @@ pages:
   - npm start --tags=dsl
   - dictzip -k src/b*.dsl
   - mkdir public
-  - zip -j public/bkrs.zip src/b*.dsl extras/*.bmp
-  - zip -j public/bkrs-min.zip src/*.dsl.dz extras/*.bmp
+  - zip -j public/bkrs.zip src/b*.dsl extras/*.bmp src/*.yml
+  - zip -j public/bkrs-min.zip src/*.dsl.dz extras/*.bmp src/*.yml
 
   artifacts:
     paths:

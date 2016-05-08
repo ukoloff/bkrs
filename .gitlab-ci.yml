@@ -8,9 +8,9 @@ pages:
   only:
   - master
   before_script:
+  - NPM_CONFIG_LOGLEVEL=warn
   - apt-get update -qq
   - apt-get install -y dictzip zip
-  - npm config set loglevel warn
   - npm install npm@latest -g
   - node -v
   - npm -v

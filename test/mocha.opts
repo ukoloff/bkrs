@@ -1,3 +1,5 @@
 --require should
 --compilers coffee:coffee-script/register
 --reporter dot
+--require appveyor-mocha
+--no-exit

@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "appveyor-mocha": "^1.1.0",
-    "mocha": "~2.1.0",
-    "should": "~4.6.3"
+    "mocha": "^3.2.0",
+    "should": "^11.1.2"
   }
 }

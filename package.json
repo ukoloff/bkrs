@@ -51,7 +51,7 @@
     "trumpet": "^1.7.2"
   },
   "devDependencies": {
-    "appveyor-mocha": "^1.1.1",
+    "appveyor-mocha": "^1.1.2",
     "mocha": "^3.2.0",
     "should": "^11.1.2"
   }

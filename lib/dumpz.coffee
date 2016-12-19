@@ -5,6 +5,8 @@
 fs = require 'fs'
 yaml = require 'js-yaml'
 through2 = require 'through2'
+appveyor = require 'appveyor-mocha'
+
 dsl = require './dsl'
 tag = require './tag'
 log = require './log'
@@ -108,5 +110,4 @@ reportTags = ->
 
   counts 'tags', Object.keys(r).length
   fs.writeFile "src/tags.yml", dump = yaml.dump r
-  require './appveyor'
-  .message 'Used tags', dump
+  appveyor.message 'Used tags', dump

@@ -4,6 +4,7 @@
 
 fs = require 'fs'
 yaml = require 'js-yaml'
+appveyor = require 'appveyor-mocha'
 
 counts = false
 
@@ -15,5 +16,4 @@ module.exports = fn = (k, v)->
     console.log dump = yaml.dump counts
     fs.writeFile 'src/counts.yml', dump
     if appveyor
-      require './appveyor'
-      .message 'Statistics', dump
+      appveyor.message 'Statistics', dump

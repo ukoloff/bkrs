@@ -8,7 +8,7 @@ cache:
   - node_modules
 
 environment:
-  NOV: 7
+  NOV: 6
   GITLAB_TRIGGER: https://gitlab.com/api/v3/projects/1151002/trigger/builds
   GITLAB_TOKEN:
     secure: 1lnMAQ+5fA2qlOUv4uZZIv7PMLqzLp7lPIV2tfQ+BGA=

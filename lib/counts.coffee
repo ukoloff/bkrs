@@ -14,6 +14,6 @@ module.exports = fn = (k, v)->
 
   fn.report = (passThru)->
     console.log dump = yaml.dump counts
-    fs.writeFile 'src/counts.yml', dump
+    fs.writeFile 'src/counts.yml', dump, ->
     if passThru
       appveyor.message 'Statistics', dump

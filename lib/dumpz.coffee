@@ -109,5 +109,6 @@ reportTags = ->
     r[x.k] = x.v
 
   counts 'tags', Object.keys(r).length
-  fs.writeFile "src/tags.yml", dump = yaml.dump r
+  dump = yaml.dump r
+  fs.writeFile "src/tags.yml", dump, ->
   appveyor.message 'Used tags', dump

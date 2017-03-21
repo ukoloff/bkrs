@@ -3,6 +3,7 @@ version: 1.0.{build}-{branch}
 branches:
   only:
     - master
+    -curl
 
 cache:
   - node_modules
@@ -19,9 +20,9 @@ platform:
 install:
   - ps: Install-Product node $env:NOV $env:PLATFORM
   - npm install
-  - curl -fsSL https://github.com/ukoloff/bkrs/wiki/tools/ZD_Tools_1.3.zip -o src/zdtools.zip
+  - appveyor DownloadFile https://github.com/ukoloff/bkrs/wiki/tools/ZD_Tools_1.3.zip -FileName src/zdtools.zip
   - 7z x src/zdtools.zip -osrc makezd.exe
-  - curl -fsSL https://github.com/ukoloff/bkrs/wiki/tools/dictzip.exe -o src/dictzip.exe
+  - appveyor DownloadFile https://github.com/ukoloff/bkrs/wiki/tools/dictzip.exe -FileName src/dictzip.exe
 
 build: off
 

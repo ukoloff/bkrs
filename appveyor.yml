@@ -19,9 +19,9 @@ platform:
 install:
   - ps: Install-Product node $env:NOV $env:PLATFORM
   - npm install
-  - appveyor DownloadFile https://github.com/ukoloff/bkrs/wiki/tools/ZD_Tools_1.3.zip -FileName src/zdtools.zip
+  - node lib/curl https://github.com/ukoloff/bkrs/wiki/tools/ZD_Tools_1.3.zip src/zdtools.zip
   - 7z x src/zdtools.zip -osrc makezd.exe
-  - appveyor DownloadFile https://github.com/ukoloff/bkrs/wiki/tools/dictzip.exe -FileName src/dictzip.exe
+  - node lib/curl https://github.com/ukoloff/bkrs/wiki/tools/dictzip.exe src/dictzip.exe
 
 build: off
 

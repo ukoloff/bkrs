@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d @script/body.json https://ci.appveyor.com/api/builds

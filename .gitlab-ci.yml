@@ -1,0 +1,6 @@
+image: node:4
+
+push:
+  script:
+  - curl -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d @data/body.json https://ci.appveyor.com/api/builds
+

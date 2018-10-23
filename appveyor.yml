@@ -8,7 +8,7 @@ cache:
   - node_modules
 
 environment:
-  NOV: 8
+  NOV: 10
 
 platform:
   - x86

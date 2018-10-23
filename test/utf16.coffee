@@ -2,7 +2,7 @@ through2 = require 'through2'
 utf16 = require '../lib/utf16'
 
 convert = (buf)->
-  r = new Buffer 0
+  r = Buffer.alloc 0
   x = utf16()
   x.pipe through2 (data, enc, cb)->
     r = Buffer.concat [r, data]

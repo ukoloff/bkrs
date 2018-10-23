@@ -5,4 +5,4 @@ through2 = require 'through2'
 
 module.exports = ->
   through2 (data, enc, cb)->
-    cb null, new Buffer data.toString('utf8'), 'utf16le'
+    cb null, Buffer.from data.toString('utf8'), 'utf16le'

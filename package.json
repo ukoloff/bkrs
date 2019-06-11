@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "description": "Convert bkrs.info database to zd format",
+  "author": {
+    "name": "Stas Ukolov",
+    "email": "ukoloff@gmail.com"
+  },
+  "homepage": "https://github.com/ukoloff/bkrs",
   "main": "lib",
   "scripts": {
     "postinstall": "node lib/install",
@@ -20,14 +25,9 @@
     "dictionary",
     "Dictan"
   ],
-  "author": {
-    "name": "Stas Ukolov",
-    "email": "ukoloff@gmail.com"
-  },
   "bugs": {
     "url": "https://github.com/ukoloff/bkrs/issues"
   },
-  "homepage": "https://github.com/ukoloff/bkrs",
   "sourceURL": "http://bkrs.info/p47",
   "sources": [
     "examples",
@@ -41,7 +41,7 @@
   "dependencies": {
     "coffee-script": "~1.9.0",
     "full-text-search-light": "0.0.7",
-    "js-yaml": "~3.2.5",
+    "js-yaml": "^3.13.1",
     "mkdirp": "^0.5.1",
     "multistream": "^2.0.5",
     "request": "^2.69.0",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "appveyor-mocha": "^1.1.2",
-    "mocha": "^3.2.0",
+    "mocha": "^6.1.4",
     "should": "^11.1.2"
   }
 }

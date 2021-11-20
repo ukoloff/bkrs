@@ -6,7 +6,7 @@ cache:
 
 pages:
   only:
-  # - master
+  - master
   before_script:
   - NPM_CONFIG_LOGLEVEL=warn
   - apt-get update -qq

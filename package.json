@@ -11,7 +11,7 @@
   "main": "lib",
   "scripts": {
     "postinstall": "node lib/install",
-    "test": "node_modules/.bin/mocha",
+    "test": "mocha",
     "start": "node ."
   },
   "repository": {

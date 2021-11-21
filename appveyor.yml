@@ -1,14 +1,14 @@
 version: 1.0.{build}-{branch}
 
-branches:
-  only:
-    - master
+# branches:
+#   only:
+#     - master
 
 cache:
   - node_modules
 
 environment:
-  NOV: 10
+  NOV: 16
 
 platform:
   - x86
